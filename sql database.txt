@@ -1,0 +1,76 @@
+To design a database for IMDB, you can use the following schema in MySQL:
+
+Table: Movie
+
+    movie_id (Primary Key)
+    title
+    release_year
+    duration
+    rating
+
+Table: Media
+
+    media_id (Primary Key)
+    movie_id (Foreign Key referencing Movie.movie_id)
+    media_type (Video or Image)
+    media_url
+
+Table: Genre
+
+    genre_id (Primary Key)
+    genre_name
+
+Table: Movie_Genre
+
+    movie_id (Foreign Key referencing Movie.movie_id)
+    genre_id (Foreign Key referencing Genre.genre_id)
+
+Table: User
+
+    user_id (Primary Key)
+    username
+    password
+
+Table: Review
+
+    review_id (Primary Key)
+    movie_id (Foreign Key referencing Movie.movie_id)
+    user_id (Foreign Key referencing User.user_id)
+    review_text
+    rating
+
+Table: Artist
+
+    artist_id (Primary Key)
+    artist_name
+
+Table: Skill
+
+    skill_id (Primary Key)
+    skill_name
+
+Table: Artist_Skill
+
+    artist_id (Foreign Key referencing Artist.artist_id)
+    skill_id (Foreign Key referencing Skill.skill_id)
+
+Table: Movie_Artist
+
+    movie_id (Foreign Key referencing Movie.movie_id)
+    artist_id (Foreign Key referencing Artist.artist_id)
+    role_name
+
+This schema includes the necessary tables and relationships to fulfill the requirements you mentioned. Here's a breakdown of the tables:
+
+    The "Movie" table stores information about each movie, such as its title, release year, duration, and rating.
+    The "Media" table allows a movie to have multiple media (videos or images) associated with it. Each media entry has a media_id and a reference to the movie it belongs to (movie_id).
+    The "Genre" table holds the different genres of movies.
+    The "Movie_Genre" table establishes a many-to-many relationship between movies and genres. It links movies and genres through their respective IDs.
+    The "User" table stores user information, including a unique user_id, username, and password.
+    The "Review" table represents reviews given by users for movies. It contains a review_id, a reference to the movie being reviewed (movie_id), a reference to the user who wrote the review (user_id), the review text, and a rating.
+    The "Artist" table stores information about artists involved in movies, with an artist_id and the artist's name.
+    The "Skill" table contains different skills an artist can have.
+    The "Artist_Skill" table establishes a many-to-many relationship between artists and skills. It links artists and skills through their respective IDs.
+    The "Movie_Artist" table represents the roles artists play in movies. It connects movies and artists through their respective IDs and includes a role_name field to specify the role.
+
+This schema provides the necessary structure to represent movies, media, genres, reviews, users, artists, skills, and their relationships in the IMDB database.
